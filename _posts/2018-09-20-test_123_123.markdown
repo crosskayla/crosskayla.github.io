@@ -1,9 +1,0 @@
----
-layout: post
-title:      "TEST 123 123"
-date:       2018-09-20 14:09:54 +0000
-permalink:  test_123_123
----
-
-
-The content of your blog post goes here. The content of your blog post goes here. The content of your blog post goes here. The content of your blog post goes here.The content of your blog post goes here. The content of your blog post goes here.The content of your blog post goes here. The content of your blog post goes here.The content of your blog post goes here. The content of your blog post goes here.The content of your blog post goes here. The content of your blog post goes here.

@@ -1,13 +1,13 @@
 # Site settings
 author: Kayla Cross
-title: Cursor to Console
+title: Ruby in the rough
 header-img: img/home-bg.png
 email: kac288@georgetown.edu
 copyright_name: Kayla Cross
 description: > # this means to ignore newlines until "baseurl:"
-  Misadventures in coding and writing
+  (Mis)adventures in coding and writing
 baseurl: "" # the subpath of your site, e.g. /blog
-twitter_username: 
+twitter_username:
 github_username:  crosskayla
 
 # Build settings

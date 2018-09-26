@@ -1,11 +1,11 @@
 # Site settings
 author: Kayla Cross
 title: Ruby in the rough
-header-img: img/home-bg.png
+header-img: img/new-header.png
 email: kac288@georgetown.edu
 copyright_name: Kayla Cross
 description: > # this means to ignore newlines until "baseurl:"
-  (Mis)adventures in coding and writing
+  (mis)adventures in coding and writing
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username:
 github_username:  crosskayla

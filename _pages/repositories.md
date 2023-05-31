@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /repositories/
-title: Repositories
+title: repositories
 description: Most of my work is in private repos, but here are a few old public ones.
 nav: true
 nav_order: 3

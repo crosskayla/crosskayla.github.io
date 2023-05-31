@@ -1,102 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://crosskayla.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crosskayla.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-05-31T22:10:26+00:00</updated><id>https://crosskayla.github.io/feed.xml</id><title type="html">Kayla Cross</title><subtitle>Portfolio website by and for Kayla Cross.
-</subtitle><entry><title type="html">a post with custom blockquotes</title><link href="https://crosskayla.github.io/blog/2023/custom-blockquotes/" rel="alternate" type="text/html" title="a post with custom blockquotes" /><published>2023-05-12T19:53:00+00:00</published><updated>2023-05-12T19:53:00+00:00</updated><id>https://crosskayla.github.io/blog/2023/custom-blockquotes</id><content type="html" xml:base="https://crosskayla.github.io/blog/2023/custom-blockquotes/"><![CDATA[<p>This post shows how to add custom styles for blockquotes. Based on <a href="https://github.com/sighingnow/jekyll-gitbook">jekyll-gitbook</a> implementation.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://crosskayla.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crosskayla.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-05-31T22:56:40+00:00</updated><id>https://crosskayla.github.io/feed.xml</id><title type="html">Kayla Cross</title><subtitle>Portfolio website by and for Kayla Cross.
+</subtitle><entry><title type="html">A frank download of the Sinatra project</title><link href="https://crosskayla.github.io/a_frank_download_of_the_sinatra_project" rel="alternate" type="text/html" title="A frank download of the Sinatra project" /><published>2018-09-14T22:49:05+00:00</published><updated>2018-09-14T22:49:05+00:00</updated><id>https://crosskayla.github.io/a_frank_download_of_the_sinatra_project</id><content type="html" xml:base="https://crosskayla.github.io/a_frank_download_of_the_sinatra_project"><![CDATA[<p><strong>My project idea</strong></p>
 
-<p>We decided to support the same custom blockquotes as in <a href="https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html">jekyll-gitbook</a>, which are also found in a lot of other sites’ styles. The styles definitions can be found on the <a href="https://github.com/alshedivat/al-folio/blob/master/_sass/_base.scss">_base.scss</a> file, more specifically:</p>
+<p>Because I’ve recently gotten back into learning piano through Youtube videos, I decided to base my Sinatra project on that use case. So I made Virtual Virtuoso, an app for users who want to keep track of the songs they’re mastering and the videos they use to learn them. Below are a few thoughts on the project…</p>
 
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Tips, warnings, and dangers */</span>
-<span class="nc">.post</span> <span class="nc">.post-content</span> <span class="nt">blockquote</span> <span class="p">{</span>
-    <span class="k">&amp;</span><span class="nc">.block-tip</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-bg</span><span class="p">);</span>
+<p><strong>Problem area: has many through</strong></p>
 
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
+<p>One of my biggest mental blocks was the has_many :through type of many-to-many relationship, which I struggled to understand for a while. In addition to our lessons and labs, I found <a href="https://teamtreehouse.com/library/has-many-through-associations">this</a> teamtreehouse explanation helpful because they illustrate an app with Magazine, Subscriber, and Subscription models, which for some reason made things click for me. Magazines and Subscribers have a has_many through relationship - magazines have many subscribers and subscribers have many magazine subscriptions, but they’re associated through a third model, the Subcription. This was parallel to my app, in which users can have many songs in their libraries, and songs can be learned by multiple users. So it’s also a many-to-many relationship between users and songs. In my join table UserSongs, each instance is made up of one user and one song, linking them. Each “UserSong” has only one user and one song - a belongs-to relationship. When I started thinking about that model like a user library, it became much more intuitive and easy to work with mentally.</p>
 
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<p>Tux was a godsend for association testing, helping me cement what would happen behind the scenes when using join tables. For example, I didn’t immediately realize that adding a song to a user using something like <code class="language-plaintext highlighter-rouge">@user.songs &lt;&lt; song</code> automatically triggers the reverse association (i.e., that the user is added to the collection of song.users). For a while I was making the UserSong instance directly, which wasn’t necessary and made my code more confusing.</p>
 
-  <span class="k">&amp;</span><span class="nc">.block-warning</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-bg</span><span class="p">);</span>
+<p><strong>Slowly but cssurely</strong></p>
 
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
+<p>I knew my html/css skills needed some work, so I decided to play around with Bootstrap for the views in my app. I wanted to practice getting familiar with the framework without spending too much time editing the styles to my liking, so I used it right out of the box. It also helped keep me motivated - it was satisfying when views turned out looking nice aesthetically.</p>
 
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<p><strong>Help along the way</strong></p>
 
-  <span class="k">&amp;</span><span class="nc">.block-danger</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-bg</span><span class="p">);</span>
+<p>Usually I have a hard time being patient enough to sit through video explanations, but the ones included in the Sinatra lessons are incredibly useful for illustrating the structure of the project, which is often the hardest part for me to troubleshoot. (A structural problem that stumped me for a while was not including any of my controllers besides the main Application controller in my config.ru file…) Additionally, the live screen shares instructors did were extremely helpful - hearing other students asking questions and watching the organic thought process of creating/designing an application was invaluable.</p>
 
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
+<p>I enjoyed this project even more than the last, and am very excited to see what Rails will be like!</p>]]></content><author><name></name></author><category term="assignments," /><category term="projects" /><summary type="html"><![CDATA[My project idea]]></summary></entry><entry><title type="html">Hardest thing(s) about the CLI project</title><link href="https://crosskayla.github.io/hardest_thing_s_about_the_cli_project" rel="alternate" type="text/html" title="Hardest thing(s) about the CLI project" /><published>2018-05-16T18:40:44+00:00</published><updated>2018-05-16T18:40:44+00:00</updated><id>https://crosskayla.github.io/hardest_thing_s_about_the_cli_project</id><content type="html" xml:base="https://crosskayla.github.io/hardest_thing_s_about_the_cli_project"><![CDATA[<p>For my CLI project, I drew inspiration from my DC surroundings to make <a href="https://github.com/crosskayla/congress-rep-CLI">CongressCLI</a>, a simple command line program that scrapes senators’ names from senate.gov and displays them by state. It also gives users the option to display contact information for their senators. Below are the hardest four things about the project.</p>
 
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p><strong>Nokogiri</strong></p>
 
-<p>A regular blockquote can be used as following:</p>
+<p>I thought I understood Nokogiri during the lesson, but I didn’t fully wrap my head around the level of variation in the way different sites use Javascript. It took some serious trial and error to be able to isolate the elements I wanted from the Senate site.</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This is a regular blockquote</span>
-<span class="gt">&gt; and it can be used as usual</span>
-</code></pre></div></div>
+<p>My recommendation: do it the way the Learn curriculum teaches, in pry:</p>
 
-<blockquote>
-  <p>This is a regular blockquote
-and it can be used as usual</p>
-</blockquote>
+<ol>
+  <li>load your webpage with open-url</li>
+  <li>make a new nokogiri object</li>
+  <li>place a binding.pry after to play around with .css</li>
+  <li>use <code class="language-plaintext highlighter-rouge">.size</code>, <code class="language-plaintext highlighter-rouge">.text</code>, and <code class="language-plaintext highlighter-rouge">.first</code> or <code class="language-plaintext highlighter-rouge">[0]</code> liberally to avoid dealing with loooong strings of XML</li>
+</ol>
 
-<p>These custom styles can be used by adding the specific class to the blockquote, as follows:</p>
+<p><strong>Learning Git/Github</strong></p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### TIP</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; A tip can be used when you want to give advice</span>
-<span class="gt">&gt; related to a certain content.</span>
-{: .block-tip }
-</code></pre></div></div>
+<p>Git seemed abstract and hard to grasp to me at first.</p>
 
-<blockquote class="block-tip">
-  <h5 id="tip">TIP</h5>
+<p>I started thinking in analogy, comparing it to something I’m very familiar with - editing a Google Doc with multiple users.</p>
 
-  <p>A tip can be used when you want to give advice
-related to a certain content.</p>
-</blockquote>
+<ul>
+  <li>The master repository with committed changes is the original text of the Google Doc.</li>
+  <li>You initialize this capability with <code class="language-plaintext highlighter-rouge">git init</code>. To “turn on” tracked changes for all your doc(s), use <code class="language-plaintext highlighter-rouge">git add .</code>.</li>
+  <li>The changes you’re committing are the colorful font of your edits. (<code class="language-plaintext highlighter-rouge">Git commit -am “string”</code> commits all changes with message - kind of like a Google Doc edit with a comment.)</li>
+  <li>The underlying document has not changed when you track your changes - you have to accept the edits to make them permanent. Pushing is the equivalent of accepting those changes ( <code class="language-plaintext highlighter-rouge">git push -u origin master</code>).</li>
+</ul>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### WARNING</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; This is a warning, and thus should</span>
-<span class="gt">&gt; be used when you want to warn the user</span>
-{: .block-warning }
-</code></pre></div></div>
+<p>Having a cheat sheet of helpful commands while using Git was very helpful. Some of the commands I saved from the lessons for quick reference are below:</p>
 
-<blockquote class="block-warning">
-  <h5 id="warning">WARNING</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git clone your-copied-github-url </code>- creates local copy of forked GitHub repo</li>
+  <li><code class="language-plaintext highlighter-rouge">mkdir</code> - new directory</li>
+  <li><code class="language-plaintext highlighter-rouge">touch</code> - new file</li>
+  <li><code class="language-plaintext highlighter-rouge">echo “string” &gt; file</code> - adds string to file (useful for readme/logs)</li>
+  <li><code class="language-plaintext highlighter-rouge">ls</code> - lists all files</li>
+  <li><code class="language-plaintext highlighter-rouge">git init </code>- initializes new git repository in current directory</li>
+  <li><code class="language-plaintext highlighter-rouge">git status</code> – shows status of commits (if everything is committed &amp; pushed to master repo, it will be ‘clean’)</li>
+  <li><code class="language-plaintext highlighter-rouge">git add</code> - tells git to track file</li>
+  <li><code class="language-plaintext highlighter-rouge">git add .</code> - tells git to track entire current directory</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit -m “string”</code> - commits one change with a message</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit -am “string” </code>- commits all changes with a message</li>
+  <li><code class="language-plaintext highlighter-rouge">git rm -r filename </code>- delete file</li>
+  <li><code class="language-plaintext highlighter-rouge">git push -u origin master</code> - push code to repository</li>
+</ul>
 
-  <p>This is a warning, and thus should
-be used when you want to warn the user</p>
-</blockquote>
+<p><strong>Listening to my own voice on the recording</strong></p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### DANGER</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; This is a danger zone, and thus should</span>
-<span class="gt">&gt; be used carefully</span>
-{: .block-danger }
-</code></pre></div></div>
+<p>If you’re using a Mac, it turns out recording a voiceover + walkthrough of your gem is incredibly easy! But listening to your own voice can be harder…</p>
 
-<blockquote class="block-danger">
-  <h5 id="danger">DANGER</h5>
+<p>Simple screen recording with voice:</p>
+<ol>
+  <li>Open QuickTime Player</li>
+  <li>Click File &gt; New Screen Recording</li>
+  <li>Click the mini arrow in the menu that pops up to select your microphone input and mouse settings</li>
+</ol>
 
-  <p>This is a danger zone, and thus should
-be used carefully</p>
-</blockquote>]]></content><author><name></name></author><category term="sample-posts" /><category term="blockquotes" /><summary type="html"><![CDATA[an example of a blog post with custom blockquotes]]></summary></entry></feed>
+<p>So in addition to working on my coding, after watching my walkthrough, I’m going to work on removing “um” from my vocabulary.</p>
+
+<p><strong>Dork/life balance</strong></p>
+
+<p>Finding long blocks of time for in-depth projects like this was another hard part of the project. Although those blocks are scarce, using them is so effective – I did the bulk of my CLI in one focused day. I love <a href="https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692">this</a> Cal Newport book on the importance of focused, deep work, and I’ve found it to apply to my programming process.</p>
+
+<p>The biggest delay of the project was this blog post itself - there are no specs or suggestions, so it’s harder to get started! Test based development gives me a framework so that I rarely have long stalls during which I run out of ideas.</p>]]></content><author><name></name></author><category term="assignments," /><category term="projects" /><summary type="html"><![CDATA[For my CLI project, I drew inspiration from my DC surroundings to make CongressCLI, a simple command line program that scrapes senators’ names from senate.gov and displays them by state. It also gives users the option to display contact information for their senators. Below are the hardest four things about the project.]]></summary></entry><entry><title type="html">The Sims made me do it</title><link href="https://crosskayla.github.io/the_sims_made_me_do_it" rel="alternate" type="text/html" title="The Sims made me do it" /><published>2018-03-20T01:01:17+00:00</published><updated>2018-03-20T01:01:17+00:00</updated><id>https://crosskayla.github.io/the_sims_made_me_do_it</id><content type="html" xml:base="https://crosskayla.github.io/the_sims_made_me_do_it"><![CDATA[<p><em>The 2000s was a productive waste of time for me.</em></p>
+
+<p>For a nerdy girl in an itinerant family, the internet was a godsend. I moved around a lot from school to school, and the internet was always a click away - I could take it all with me. I also respected the technology community’s ethos - however apocryphal - that it wasn’t about who you were, but what you could do. Most comforting was the <a href="https://www.rollingstone.com/glixel/features/neopets-a-look-into-early-2000s-girl-culture-w509885">culture around early online games</a> and the freedom they gave me, and kids like me, to create our own little worlds.</p>
+
+<p>Take Neopets. The first time I used html and css was to deck out my Neopets store with my own custom template. I can’t remember the exact details of the layout, but I’m sure it kept up with the chicest <a href="http://https://gizmodo.com/5983574/remember-the-hilarious-horror-of-geocities-with-this-website">Geocities</a> design <a href="http://http://www.cameronsworld.net/">trends</a> of the time. (Warning: the latter link has autoplay music - but that should be self-evident. I said Geocities.)</p>
+
+<p><img src="http://contemporary-home-computing.org/still-there/geocities/geo1996.png" alt="Photo" /></p>
+
+<p>And The Sims! The possibilities within the default builds seemed endless, but when I found out there was custom content on top of that? And that I could make my own if I only knew how? And that knowing how was a few tutorials away? I modded every release of those games and felt like I’d hit the motherlode. (Speaking of Geocities, if my blog had an autoplay mp3, it would be The Sims’ <a href="https://www.youtube.com/watch?v=LvDS6hRzN8k">loading music</a>.)</p>
+
+<p>My small additions to these games thrilled me because there were so many possibilities. I rarely ever had trouble with writer’s block - I got excited at the blankness of the page because it meant I could write. It turns out the same went for the emptiness of a bright, blinking screen or a console when I was starting a project - it meant I could make something.</p>
+
+<p>Much later, I took a Ruby class in college and rediscovered my love for coding. Then I took a C++ class and lost it again. :) Regardless, as I was taking stock of my experience at school before I graduated at the end of last year, I noticed that the only time I lost track of time while doing schoolwork was when working on coding and writing projects. So I decided to commit myself to pursuing it - not just because it means a lot of time I enjoyed wasting in my youth wouldn’t be, well, wasted - but because it’s been a constant passion throughout my life. One that I want to continue until I’m old enough to explain to younger generations what it was like before artificially intelligent Sims.</p>]]></content><author><name></name></author><category term="musings," /><category term="gaming," /><category term="personal" /><summary type="html"><![CDATA[The 2000s was a productive waste of time for me.]]></summary></entry></feed>

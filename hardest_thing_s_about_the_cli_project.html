@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Kayla Cross</title>
+    <title>Hardest thing(s) about the CLI project | Kayla Cross</title>
     <meta name="author" content="Kayla  Cross">
     <meta name="description" content="Portfolio website by and for Kayla Cross.
 ">
@@ -38,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%91%A9%F0%9F%8F%BC%E2%80%8D%F0%9F%92%BB&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://crosskayla.github.io/">
+    <link rel="canonical" href="https://crosskayla.github.io/hardest_thing_s_about_the_cli_project">
 
     <!-- Dark Mode -->
     
@@ -59,7 +59,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          
+          <a class="navbar-brand title font-weight-lighter" href="/">Kayla Cross</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -72,8 +72,8 @@
             <ul class="navbar-nav ml-auto flex-nowrap">
 
               <!-- About -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/">about<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
               </li>
               
               <!-- Blog -->
@@ -119,77 +119,108 @@
     <!-- Content -->
     <div class="container mt-5">
       
-        <!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          <h1 class="post-title">
-           Kayla Cross
-          </h1>
-          <p class="desc"></p>
-        </header>
+        <!-- _layouts/post.html -->
 
-        <article>
-          <div class="profile float-right">
+<div class="post">
 
-              <figure>
+  <header class="post-header">
+    <h1 class="post-title">Hardest thing(s) about the CLI project</h1>
+    <p class="post-meta">May 16, 2018</p>
+    <p class="post-tags">
+      <a href="/blog/2018"> <i class="fas fa-calendar fa-sm"></i> 2018 </a>
+        ·  
+        <a href="/blog/category/assignments">
+          <i class="fas fa-tag fa-sm"></i> assignments,</a>  
+          <a href="/blog/category/projects">
+          <i class="fas fa-tag fa-sm"></i> projects</a>  
+          
 
-  <picture>
+    </p>
+  </header>
+
+  <article class="post-content">
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/prof_pic-800.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/prof_pic-1400.webp"></source>
-    
+    <div id="markdown-content">
+      <p>For my CLI project, I drew inspiration from my DC surroundings to make <a href="https://github.com/crosskayla/congress-rep-CLI" rel="external nofollow noopener" target="_blank">CongressCLI</a>, a simple command line program that scrapes senators’ names from senate.gov and displays them by state. It also gives users the option to display contact information for their senators. Below are the hardest four things about the project.</p>
 
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/prof_pic.jpeg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpeg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+<p><strong>Nokogiri</strong></p>
 
-  </picture>
+<p>I thought I understood Nokogiri during the lesson, but I didn’t fully wrap my head around the level of variation in the way different sites use Javascript. It took some serious trial and error to be able to isolate the elements I wanted from the Senate site.</p>
 
-</figure>
+<p>My recommendation: do it the way the Learn curriculum teaches, in pry:</p>
 
-          </div>
+<ol>
+  <li>load your webpage with open-url</li>
+  <li>make a new nokogiri object</li>
+  <li>place a binding.pry after to play around with .css</li>
+  <li>use <code class="language-plaintext highlighter-rouge">.size</code>, <code class="language-plaintext highlighter-rouge">.text</code>, and <code class="language-plaintext highlighter-rouge">.first</code> or <code class="language-plaintext highlighter-rouge">[0]</code> liberally to avoid dealing with loooong strings of XML</li>
+</ol>
 
-          <div class="clearfix">
-            <p>I am a writer of code and prose!
-Professionally, I have over four years of experience as a full stack software engineer on collaborative engineering teams.</p>
+<p><strong>Learning Git/Github</strong></p>
 
-<p>As passionate about communicating as I am about coding, I excel at deeply understanding the needs of management, clients, and users across all levels of technical proficiency.</p>
+<p>Git seemed abstract and hard to grasp to me at first.</p>
 
-<p>I’m particularly interested and experienced in back end development, especially using Java and the JVM ecosystem (including Spring and Groovy/Grails). 
-I am also skilled in Ruby on Rails and API development in general.</p>
+<p>I started thinking in analogy, comparing it to something I’m very familiar with - editing a Google Doc with multiple users.</p>
 
-<p>I have worked across the fintech, government contracting, and healthcare industries, and am always excited to immerse myself in a new technology or field.</p>
+<ul>
+  <li>The master repository with committed changes is the original text of the Google Doc.</li>
+  <li>You initialize this capability with <code class="language-plaintext highlighter-rouge">git init</code>. To “turn on” tracked changes for all your doc(s), use <code class="language-plaintext highlighter-rouge">git add .</code>.</li>
+  <li>The changes you’re committing are the colorful font of your edits. (<code class="language-plaintext highlighter-rouge">Git commit -am “string”</code> commits all changes with message - kind of like a Google Doc edit with a comment.)</li>
+  <li>The underlying document has not changed when you track your changes - you have to accept the edits to make them permanent. Pushing is the equivalent of accepting those changes ( <code class="language-plaintext highlighter-rouge">git push -u origin master</code>).</li>
+</ul>
 
+<p>Having a cheat sheet of helpful commands while using Git was very helpful. Some of the commands I saved from the lessons for quick reference are below:</p>
 
-          </div>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">git clone your-copied-github-url </code>- creates local copy of forked GitHub repo</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">mkdir</code> - new directory</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">touch</code> - new file</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">echo “string” &gt; file</code> - adds string to file (useful for readme/logs)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">ls</code> - lists all files</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git init </code>- initializes new git repository in current directory</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git status</code> – shows status of commits (if everything is committed &amp; pushed to master repo, it will be ‘clean’)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git add</code> - tells git to track file</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git add .</code> - tells git to track entire current directory</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git commit -m “string”</code> - commits one change with a message</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git commit -am “string” </code>- commits all changes with a message</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git rm -r filename </code>- delete file</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git push -u origin master</code> - push code to repository</li>
+</ul>
 
-          <!-- News -->
-          
+<p><strong>Listening to my own voice on the recording</strong></p>
 
-          <!-- Latest posts -->
-          
+<p>If you’re using a Mac, it turns out recording a voiceover + walkthrough of your gem is incredibly easy! But listening to your own voice can be harder…</p>
 
-          <!-- Selected papers -->
-          
+<p>Simple screen recording with voice:</p>
+<ol>
+  <li>Open QuickTime Player</li>
+  <li>Click File &gt; New Screen Recording</li>
+  <li>Click the mini arrow in the menu that pops up to select your microphone input and mouse settings</li>
+</ol>
 
-          <!-- Social -->
-            <div class="social">
-              <div class="contact-icons">
-                <a href="mailto:%6B%61%79%6C%61@%63%72%6F%73%73%6B%61%79.%6C%61" title="email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/crosskayla" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/kayla-cross-09a455b1" title="LinkedIn" rel="external nofollow noopener" target="_blank"><i class="fab fa-linkedin"></i></a>
-            
+<p>So in addition to working on my coding, after watching my walkthrough, I’m going to work on removing “um” from my vocabulary.</p>
 
-              </div>
+<p><strong>Dork/life balance</strong></p>
 
-              <div class="contact-note">
-                Reach me on LinkedIn!
+<p>Finding long blocks of time for in-depth projects like this was another hard part of the project. Although those blocks are scarce, using them is so effective – I did the bulk of my CLI in one focused day. I love <a href="https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692" rel="external nofollow noopener" target="_blank">this</a> Cal Newport book on the importance of focused, deep work, and I’ve found it to apply to my programming process.</p>
 
-              </div>
+<p>The biggest delay of the project was this blog post itself - there are no specs or suggestions, so it’s harder to get started! Test based development gives me a framework so that I rarely have long stalls during which I run out of ideas.</p>
 
-            </div>
-        </article>
-
+    </div>
+  </article>
 </div>
 
       

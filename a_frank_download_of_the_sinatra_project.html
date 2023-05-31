@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Kayla Cross</title>
+    <title>A frank download of the Sinatra project | Kayla Cross</title>
     <meta name="author" content="Kayla  Cross">
     <meta name="description" content="Portfolio website by and for Kayla Cross.
 ">
@@ -38,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%91%A9%F0%9F%8F%BC%E2%80%8D%F0%9F%92%BB&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://crosskayla.github.io/">
+    <link rel="canonical" href="https://crosskayla.github.io/a_frank_download_of_the_sinatra_project">
 
     <!-- Dark Mode -->
     
@@ -59,7 +59,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          
+          <a class="navbar-brand title font-weight-lighter" href="/">Kayla Cross</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -72,8 +72,8 @@
             <ul class="navbar-nav ml-auto flex-nowrap">
 
               <!-- About -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/">about<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
               </li>
               
               <!-- Blog -->
@@ -119,77 +119,50 @@
     <!-- Content -->
     <div class="container mt-5">
       
-        <!-- about.html -->
-      <div class="post">
-        <header class="post-header">
-          <h1 class="post-title">
-           Kayla Cross
-          </h1>
-          <p class="desc"></p>
-        </header>
+        <!-- _layouts/post.html -->
 
-        <article>
-          <div class="profile float-right">
+<div class="post">
 
-              <figure>
+  <header class="post-header">
+    <h1 class="post-title">A frank download of the Sinatra project</h1>
+    <p class="post-meta">September 14, 2018</p>
+    <p class="post-tags">
+      <a href="/blog/2018"> <i class="fas fa-calendar fa-sm"></i> 2018 </a>
+        ·  
+        <a href="/blog/category/assignments">
+          <i class="fas fa-tag fa-sm"></i> assignments,</a>  
+          <a href="/blog/category/projects">
+          <i class="fas fa-tag fa-sm"></i> projects</a>  
+          
 
-  <picture>
+    </p>
+  </header>
+
+  <article class="post-content">
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/prof_pic-800.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/prof_pic-1400.webp"></source>
-    
+    <div id="markdown-content">
+      <p><strong>My project idea</strong></p>
 
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/prof_pic.jpeg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpeg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+<p>Because I’ve recently gotten back into learning piano through Youtube videos, I decided to base my Sinatra project on that use case. So I made Virtual Virtuoso, an app for users who want to keep track of the songs they’re mastering and the videos they use to learn them. Below are a few thoughts on the project…</p>
 
-  </picture>
+<p><strong>Problem area: has many through</strong></p>
 
-</figure>
+<p>One of my biggest mental blocks was the has_many :through type of many-to-many relationship, which I struggled to understand for a while. In addition to our lessons and labs, I found <a href="https://teamtreehouse.com/library/has-many-through-associations" rel="external nofollow noopener" target="_blank">this</a> teamtreehouse explanation helpful because they illustrate an app with Magazine, Subscriber, and Subscription models, which for some reason made things click for me. Magazines and Subscribers have a has_many through relationship - magazines have many subscribers and subscribers have many magazine subscriptions, but they’re associated through a third model, the Subcription. This was parallel to my app, in which users can have many songs in their libraries, and songs can be learned by multiple users. So it’s also a many-to-many relationship between users and songs. In my join table UserSongs, each instance is made up of one user and one song, linking them. Each “UserSong” has only one user and one song - a belongs-to relationship. When I started thinking about that model like a user library, it became much more intuitive and easy to work with mentally.</p>
 
-          </div>
+<p>Tux was a godsend for association testing, helping me cement what would happen behind the scenes when using join tables. For example, I didn’t immediately realize that adding a song to a user using something like <code class="language-plaintext highlighter-rouge">@user.songs &lt;&lt; song</code> automatically triggers the reverse association (i.e., that the user is added to the collection of song.users). For a while I was making the UserSong instance directly, which wasn’t necessary and made my code more confusing.</p>
 
-          <div class="clearfix">
-            <p>I am a writer of code and prose!
-Professionally, I have over four years of experience as a full stack software engineer on collaborative engineering teams.</p>
+<p><strong>Slowly but cssurely</strong></p>
 
-<p>As passionate about communicating as I am about coding, I excel at deeply understanding the needs of management, clients, and users across all levels of technical proficiency.</p>
+<p>I knew my html/css skills needed some work, so I decided to play around with Bootstrap for the views in my app. I wanted to practice getting familiar with the framework without spending too much time editing the styles to my liking, so I used it right out of the box. It also helped keep me motivated - it was satisfying when views turned out looking nice aesthetically.</p>
 
-<p>I’m particularly interested and experienced in back end development, especially using Java and the JVM ecosystem (including Spring and Groovy/Grails). 
-I am also skilled in Ruby on Rails and API development in general.</p>
+<p><strong>Help along the way</strong></p>
 
-<p>I have worked across the fintech, government contracting, and healthcare industries, and am always excited to immerse myself in a new technology or field.</p>
+<p>Usually I have a hard time being patient enough to sit through video explanations, but the ones included in the Sinatra lessons are incredibly useful for illustrating the structure of the project, which is often the hardest part for me to troubleshoot. (A structural problem that stumped me for a while was not including any of my controllers besides the main Application controller in my config.ru file…) Additionally, the live screen shares instructors did were extremely helpful - hearing other students asking questions and watching the organic thought process of creating/designing an application was invaluable.</p>
 
+<p>I enjoyed this project even more than the last, and am very excited to see what Rails will be like!</p>
 
-          </div>
-
-          <!-- News -->
-          
-
-          <!-- Latest posts -->
-          
-
-          <!-- Selected papers -->
-          
-
-          <!-- Social -->
-            <div class="social">
-              <div class="contact-icons">
-                <a href="mailto:%6B%61%79%6C%61@%63%72%6F%73%73%6B%61%79.%6C%61" title="email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/crosskayla" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/kayla-cross-09a455b1" title="LinkedIn" rel="external nofollow noopener" target="_blank"><i class="fab fa-linkedin"></i></a>
-            
-
-              </div>
-
-              <div class="contact-note">
-                Reach me on LinkedIn!
-
-              </div>
-
-            </div>
-        </article>
-
+    </div>
+  </article>
 </div>
 
       

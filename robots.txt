@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://crosskayla.github.io//sitemap.xml
+Sitemap: https://crosskayla.github.io/sitemap.xml

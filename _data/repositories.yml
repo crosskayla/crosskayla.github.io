@@ -1,12 +1,7 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - crosskayla
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - crosskayla/adopt-a-politician
+  - crosskayla/sinatra-project
+  - crosskayla/congress-rep-CLI
